@@ -1,0 +1,29 @@
+EXTRACT NOTES - synthetic personal auto book (not real data)
+Second extract of the same book. Evaluation date: 2025-12-31.
+Prepared by the claims data team. Previous extract: evaluation date 2025-06-30.
+
+Files
+  policies.csv        one row per policy (full re-extract)
+  claims.csv          one row per claim (full re-extract, includes claims reported since June)
+  payments.csv        one row per payment transaction (full re-extract, all payments to 2025-12-31)
+  control_totals.csv  totals from the claims system's month-end report for 2025-12-31.
+                      Produced by the source system, independently of these extract files.
+
+Columns are the same as the 2025-06-30 extract (see data/2025-06-30/data_dictionary.txt), except:
+  policies.exposure   earned exposure as of 2025-12-31. Every policy term has now ended
+                      (no new policies were written after 2024-12-31), so exposure is 1.0 for all.
+
+Formats
+  payments.payment_date   YYYY-MM-DD
+  claims.loss_date        M/D/YYYY, as before
+
+control_totals.csv
+  table_name     policies, claims or payments
+  period         'all', or the payment year for payments
+  n_records      policies: number of unique policies; claims: number of claims;
+                 payments: number of payment transactions dated in that year
+  total_amount   claims: sum of paid_amount; payments: sum of amount; blank for policies
+
+Loaded into SQL_workbook.db by sql/01_load_2025-12-31.sql as tables
+policies_dec25, claims_dec25, payments_dec25, control_totals_dec25.
+The 2025-06-30 tables (policies, claims, payments) are not touched.

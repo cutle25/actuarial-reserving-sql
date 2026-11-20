@@ -1,0 +1,6 @@
+table_name,period,n_records,total_amount
+policies,all,3000,
+claims,all,275,1928942.81
+payments,2023,60,204763.81
+payments,2024,209,813443.83
+payments,2025,228,910735.17

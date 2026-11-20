@@ -1,0 +1,25 @@
+DATA DICTIONARY - synthetic personal auto book (not real data)
+Evaluation date: 2025-06-30. Each policy is a 12-month term beginning at start_date.
+
+policies.csv (one row per policy)
+  policy_id        Unique policy identifier.
+  state            State where the vehicle is garaged.
+  vehicle_type     Sedan, SUV, Truck, Sports.
+  driver_age       Age of the primary driver at policy start.
+  start_date       First day of coverage.
+  exposure         Earned exposure in policy-years as of the evaluation date:
+                   the fraction of the 12-month term that has elapsed, capped at 1.
+  annual_premium   Full-term premium for the 12 months, in dollars.
+
+claims.csv (one row per claim)
+  claim_id         Unique claim identifier.
+  policy_id        The policy the claim was made under.
+  loss_date        Date the loss occurred.
+  paid_amount      Dollars paid on the claim to date.
+
+payments.csv (one row per payment transaction)
+  payment_id       Unique payment identifier.
+  claim_id         The claim the payment was made on.
+  payment_date     Date of the payment, YYYY-MM-DD.
+  amount           Dollars paid in this transaction. Negative = money returned
+                   (a recovery such as salvage or subrogation).
